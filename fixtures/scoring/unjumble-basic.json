@@ -1,0 +1,27 @@
+{
+  "test": "unjumble",
+  "description": "one solved (case and spaces ignored), one wrong guess (not a word) then skip, one guess after time",
+  "challenge": {
+    "time_s": 60,
+    "entries": [
+      { "scrambled": "dlrow", "answer": "world" },
+      { "scrambled": "ahwt", "answer": "what" },
+      { "scrambled": "lpaec", "answer": "place" }
+    ]
+  },
+  "events": [
+    { "t_ms": 2000, "index": 0, "guess": "World " },
+    { "t_ms": 5000, "index": 1, "guess": "tahw" },
+    { "t_ms": 7000, "index": 1, "skip": true },
+    { "t_ms": 61000, "index": 2, "guess": "place" }
+  ],
+  "expected": {
+    "primary": 1,
+    "score": {
+      "solved": 1,
+      "skipped": 1,
+      "wrong_guesses": 1,
+      "answers": ["world", "what", "place"]
+    }
+  }
+}

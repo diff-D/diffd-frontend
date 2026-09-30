@@ -1,0 +1,43 @@
+{
+  "test": "blue_tea",
+  "description": "the letters in order, anywhere in the word",
+  "challenge": {
+    "groups": [
+      "wtr",
+      "ate",
+      "ate"
+    ],
+    "rules": {
+      "kind": "race",
+      "time_s": 60,
+      "scattered": true
+    }
+  },
+  "events": [
+    {
+      "t_ms": 100,
+      "word": "water"
+    },
+    {
+      "t_ms": 200,
+      "word": "tea"
+    },
+    {
+      "t_ms": 300,
+      "word": "plate"
+    }
+  ],
+  "expected": {
+    "primary": 2,
+    "score": {
+      "points": 2,
+      "words": [
+        "water",
+        "plate"
+      ],
+      "wrong": 1,
+      "skipped": 0,
+      "missed": 0
+    }
+  }
+}

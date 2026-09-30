@@ -1,0 +1,21 @@
+{
+  "test": "maths",
+  "description": "30 s: one right, one wrong, one answer after time is up",
+  "challenge": {
+    "time_s": 30,
+    "problems": [
+      { "a": 3, "op": "add", "b": 4 },
+      { "a": 10, "op": "subtract", "b": 6 },
+      { "a": 6, "op": "multiply", "b": 7 }
+    ]
+  },
+  "events": [
+    { "t_ms": 1000, "index": 0, "answer": 7 },
+    { "t_ms": 2500, "index": 1, "answer": 5 },
+    { "t_ms": 31000, "index": 2, "answer": 42 }
+  ],
+  "expected": {
+    "primary": 1,
+    "score": { "correct": 1, "wrong": 1, "accuracy": 50, "per_minute": 2 }
+  }
+}

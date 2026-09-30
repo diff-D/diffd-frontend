@@ -1,0 +1,12 @@
+{
+  "test": "sequence_memory",
+  "description": "practice from level 3: level 3 repeated, level 4 missed on its first tile",
+  "challenge": { "start_level": 3, "sequence": [1, 2, 3, 4] },
+  "events": [
+    { "t_ms": 0, "level": 3, "tile": 1 },
+    { "t_ms": 100, "level": 3, "tile": 2 },
+    { "t_ms": 200, "level": 3, "tile": 3 },
+    { "t_ms": 300, "level": 4, "tile": 0 }
+  ],
+  "expected": { "primary": 3, "score": { "level": 3 } }
+}

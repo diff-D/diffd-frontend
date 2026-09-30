@@ -1,0 +1,11 @@
+{
+  "test": "verbal_memory",
+  "description": "practice with one life: the first mistake ends it",
+  "challenge": { "lives": 1, "words": ["cat", "dog", "cat", "sun"] },
+  "events": [
+    { "t_ms": 0, "index": 0, "answer": "new" },
+    { "t_ms": 900, "index": 1, "answer": "seen" },
+    { "t_ms": 1700, "index": 2, "answer": "seen" }
+  ],
+  "expected": { "primary": 1, "score": { "score": 1, "lives_left": 0 } }
+}

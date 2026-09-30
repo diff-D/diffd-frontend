@@ -1,0 +1,32 @@
+{
+  "name": "diffd-web",
+  "private": true,
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "packageManager": "pnpm@11.26.0",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "e2e": "playwright test",
+    "themes": "node scripts/build-themes.mjs"
+  },
+  "dependencies": {
+    "@fontsource/roboto-mono": "^5.3.0",
+    "@fortawesome/fontawesome-free": "^7.3.1",
+    "@solidjs/router": "^1.0.0",
+    "qrcode-generator": "^2.0.4",
+    "solid-js": "^1.9.15"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1",
+    "vite-plugin-solid": "^2.11.14",
+    "vitest": "^5.0.2"
+  }
+}

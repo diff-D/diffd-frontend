@@ -1,0 +1,28 @@
+{
+  "test": "typing",
+  "description": "2 s time mode: one correct word, one wrong word, a correct partial word, a key after time is up",
+  "challenge": { "mode": "time", "limit": 2, "words": ["ab", "cd", "ef", "gh"] },
+  "events": [
+    { "t_ms": 0, "key": "a" },
+    { "t_ms": 300, "key": "b" },
+    { "t_ms": 600, "key": "Space" },
+    { "t_ms": 900, "key": "c" },
+    { "t_ms": 1200, "key": "x" },
+    { "t_ms": 1500, "key": "Space" },
+    { "t_ms": 1800, "key": "e" },
+    { "t_ms": 2100, "key": "f" }
+  ],
+  "expected": {
+    "primary": 24,
+    "score": {
+      "wpm": 24,
+      "raw": 42,
+      "accuracy": 71.43,
+      "consistency": 85.71,
+      "correct_chars": 4,
+      "raw_chars": 7,
+      "duration_s": 2,
+      "raw_per_second": [48, 36]
+    }
+  }
+}

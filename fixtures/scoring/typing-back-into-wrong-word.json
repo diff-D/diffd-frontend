@@ -1,0 +1,30 @@
+{
+  "test": "typing",
+  "description": "backspace at the start of a word goes back into the previous word only when it is wrong",
+  "challenge": { "mode": "words", "limit": 2, "words": ["hi", "yo"] },
+  "events": [
+    { "t_ms": 0, "key": "h" },
+    { "t_ms": 200, "key": "x" },
+    { "t_ms": 400, "key": "Space" },
+    { "t_ms": 600, "key": "Backspace" },
+    { "t_ms": 800, "key": "Backspace" },
+    { "t_ms": 1000, "key": "i" },
+    { "t_ms": 1200, "key": "Space" },
+    { "t_ms": 1400, "key": "Backspace" },
+    { "t_ms": 1600, "key": "y" },
+    { "t_ms": 1800, "key": "o" }
+  ],
+  "expected": {
+    "primary": 33.33,
+    "score": {
+      "wpm": 33.33,
+      "raw": 33.33,
+      "accuracy": 71.43,
+      "consistency": 100,
+      "correct_chars": 5,
+      "raw_chars": 5,
+      "duration_s": 1.8,
+      "raw_per_second": [36]
+    }
+  }
+}

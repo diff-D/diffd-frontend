@@ -1,0 +1,28 @@
+diff'D
+Copyright (C) 2026 diff'D contributors
+
+This program is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License version 3 as published
+by the Free Software Foundation. It is distributed WITHOUT ANY WARRANTY.
+See the LICENSE file for details.
+
+diff'D is a derivative work of Monkeytype
+(https://github.com/monkeytypegame/monkeytype), licensed under GPL-3.0.
+Portions of the frontend (themes, styles, font setup, typing test
+concepts and formulas) are copied from Monkeytype and modified.
+"Monkeytype" and its logos are not used by, and diff'D is not affiliated
+with, the Monkeytype project.
+
+The word lists in wordlists/ (english.json, english_1k.json) are copied
+unmodified from Monkeytype (frontend/static/languages/), GPL-3.0.
+
+wordlists/unjumble_dictionary.txt is derived from Monkeytype's english_450k word list
+(frontend/static/languages/english_450k.json, GPL-3.0), the ENABLE word list (Enhanced
+North American Benchmark LExicon, public domain) and english and english_1k, by
+wordlists/build_unjumble_dictionary.py.
+
+The web frontend (web/) adapts Monkeytype's look (GPL-3.0): theme colour data
+(web/src/themes/themes.json, extracted by web/scripts/build-themes.mjs) and CSS
+for buttons, inputs, words and the caret. It bundles Roboto Mono via
+@fontsource/roboto-mono (SIL OFL 1.1) and Font Awesome Free (icons CC BY 4.0,
+fonts SIL OFL 1.1, code MIT).

@@ -1,0 +1,22 @@
+{
+  "test": "reaction",
+  "description": "three rounds with one early click between the first and second",
+  "challenge": { "rounds": 3, "delays_ms": [2000, 3000, 2500, 4000] },
+  "events": [
+    { "t_ms": 0, "kind": "round_start" },
+    { "t_ms": 2000, "kind": "go" },
+    { "t_ms": 2250.5, "kind": "click" },
+    { "t_ms": 3000, "kind": "round_start" },
+    { "t_ms": 4000, "kind": "click" },
+    { "t_ms": 5000, "kind": "round_start" },
+    { "t_ms": 7500, "kind": "go" },
+    { "t_ms": 7710, "kind": "click" },
+    { "t_ms": 8000, "kind": "round_start" },
+    { "t_ms": 12000, "kind": "go" },
+    { "t_ms": 12190.25, "kind": "click" }
+  ],
+  "expected": {
+    "primary": 216.92,
+    "score": { "rounds_ms": [250.5, 210, 190.25], "average_ms": 216.92, "early_clicks": 1 }
+  }
+}

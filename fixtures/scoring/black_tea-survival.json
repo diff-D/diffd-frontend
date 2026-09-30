@@ -1,0 +1,51 @@
+{
+  "test": "black_tea",
+  "description": "a plural doesn't count; a round that runs out costs a life, three end the game",
+  "challenge": {
+    "groups": [
+      "ate",
+      "ing",
+      "ter",
+      "and",
+      "ion"
+    ],
+    "rules": {
+      "kind": "survival",
+      "lives": 3,
+      "start_ms": 10000,
+      "min_ms": 4000,
+      "step_ms": 250
+    }
+  },
+  "events": [
+    {
+      "t_ms": 1000,
+      "word": "cats"
+    },
+    {
+      "t_ms": 2000,
+      "word": "water"
+    },
+    {
+      "t_ms": 12000,
+      "word": "later"
+    },
+    {
+      "t_ms": 40000,
+      "word": "sand"
+    }
+  ],
+  "expected": {
+    "primary": 2,
+    "score": {
+      "points": 2,
+      "words": [
+        "water",
+        "later"
+      ],
+      "wrong": 1,
+      "skipped": 0,
+      "missed": 3
+    }
+  }
+}

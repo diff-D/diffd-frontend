@@ -1,0 +1,28 @@
+{
+  "test": "unjumble",
+  "description": "real English words that use the same letters count, other words and non-words do not",
+  "challenge": {
+    "time_s": 60,
+    "entries": [
+      { "scrambled": "ahwt", "answer": "what" },
+      { "scrambled": "etats", "answer": "state" },
+      { "scrambled": "nrig", "answer": "ring" }
+    ]
+  },
+  "events": [
+    { "t_ms": 1000, "index": 0, "guess": "that" },
+    { "t_ms": 2000, "index": 0, "guess": "Thaw" },
+    { "t_ms": 3000, "index": 1, "guess": "taste" },
+    { "t_ms": 4000, "index": 2, "guess": "gnir" },
+    { "t_ms": 5000, "index": 2, "guess": "grin" }
+  ],
+  "expected": {
+    "primary": 3,
+    "score": {
+      "solved": 3,
+      "skipped": 0,
+      "wrong_guesses": 2,
+      "answers": ["what", "state", "ring"]
+    }
+  }
+}

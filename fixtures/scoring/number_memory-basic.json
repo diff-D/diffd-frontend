@@ -1,0 +1,11 @@
+{
+  "test": "number_memory",
+  "description": "levels 1 and 2 right (answer padded with spaces), level 3 wrong",
+  "challenge": { "start_level": 1, "numbers": ["7", "42", "913", "5028"] },
+  "events": [
+    { "t_ms": 0, "level": 1, "answer": "7" },
+    { "t_ms": 3000, "level": 2, "answer": " 42 " },
+    { "t_ms": 6500, "level": 3, "answer": "931" }
+  ],
+  "expected": { "primary": 2, "score": { "level": 2, "start_level": 1 } }
+}

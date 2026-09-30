@@ -1,0 +1,48 @@
+{
+  "test": "red_tea",
+  "description": "each 12 s round scores its longest word",
+  "challenge": {
+    "groups": [
+      "ate",
+      "and"
+    ],
+    "rules": {
+      "kind": "rounds",
+      "rounds": 8,
+      "round_ms": 12000,
+      "count": "longest"
+    }
+  },
+  "events": [
+    {
+      "t_ms": 100,
+      "word": "late"
+    },
+    {
+      "t_ms": 200,
+      "word": "water"
+    },
+    {
+      "t_ms": 12500,
+      "word": "band"
+    },
+    {
+      "t_ms": 13000,
+      "word": "cats"
+    }
+  ],
+  "expected": {
+    "primary": 9,
+    "score": {
+      "points": 9,
+      "words": [
+        "late",
+        "water",
+        "band"
+      ],
+      "wrong": 1,
+      "skipped": 0,
+      "missed": 0
+    }
+  }
+}

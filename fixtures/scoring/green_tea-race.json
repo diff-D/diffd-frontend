@@ -1,0 +1,51 @@
+{
+  "test": "green_tea",
+  "description": "a right word moves on, a reused word doesn't count, a skip moves on, time runs out at 60 s",
+  "challenge": {
+    "groups": [
+      "ate",
+      "ate",
+      "and"
+    ],
+    "rules": {
+      "kind": "race",
+      "time_s": 60,
+      "scattered": false
+    }
+  },
+  "events": [
+    {
+      "t_ms": 500,
+      "word": " Water "
+    },
+    {
+      "t_ms": 900,
+      "word": "water"
+    },
+    {
+      "t_ms": 1000,
+      "skip": true
+    },
+    {
+      "t_ms": 1500,
+      "word": "band"
+    },
+    {
+      "t_ms": 61000,
+      "word": "sand"
+    }
+  ],
+  "expected": {
+    "primary": 2,
+    "score": {
+      "points": 2,
+      "words": [
+        "water",
+        "band"
+      ],
+      "wrong": 1,
+      "skipped": 1,
+      "missed": 0
+    }
+  }
+}

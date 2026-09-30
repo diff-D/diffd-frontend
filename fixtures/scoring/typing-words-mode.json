@@ -1,0 +1,27 @@
+{
+  "test": "typing",
+  "description": "2-word words mode with a corrected typo; the last word finishes the test without a space",
+  "challenge": { "mode": "words", "limit": 2, "words": ["hi", "yo"] },
+  "events": [
+    { "t_ms": 0, "key": "h" },
+    { "t_ms": 200, "key": "i" },
+    { "t_ms": 400, "key": "Space" },
+    { "t_ms": 600, "key": "y" },
+    { "t_ms": 800, "key": "x" },
+    { "t_ms": 1000, "key": "Backspace" },
+    { "t_ms": 1200, "key": "o" }
+  ],
+  "expected": {
+    "primary": 50,
+    "score": {
+      "wpm": 50,
+      "raw": 50,
+      "accuracy": 83.33,
+      "consistency": 100,
+      "correct_chars": 5,
+      "raw_chars": 5,
+      "duration_s": 1.2,
+      "raw_per_second": [60]
+    }
+  }
+}

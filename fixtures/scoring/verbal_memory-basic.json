@@ -1,0 +1,13 @@
+{
+  "test": "verbal_memory",
+  "description": "three right answers, then two mistakes (one life left)",
+  "challenge": { "words": ["cat", "dog", "cat", "sun", "dog"] },
+  "events": [
+    { "t_ms": 0, "index": 0, "answer": "new" },
+    { "t_ms": 900, "index": 1, "answer": "new" },
+    { "t_ms": 1700, "index": 2, "answer": "seen" },
+    { "t_ms": 2600, "index": 3, "answer": "seen" },
+    { "t_ms": 3400, "index": 4, "answer": "new" }
+  ],
+  "expected": { "primary": 3, "score": { "score": 3, "lives_left": 1 } }
+}

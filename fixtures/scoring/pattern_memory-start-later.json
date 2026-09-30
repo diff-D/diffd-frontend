@@ -1,0 +1,22 @@
+{
+  "test": "pattern_memory",
+  "description": "practice from level 2: its four tiles right, then three misses at level 3",
+  "challenge": {
+    "start_level": 2,
+    "levels": [
+      [[0, 1, 2], [0, 1, 2], [0, 1, 2]],
+      [[0, 1, 2, 3], [0, 1, 2, 3], [0, 1, 2, 3]],
+      [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4]]
+    ]
+  },
+  "events": [
+    { "t_ms": 0, "level": 2, "attempt": 0, "tile": 3 },
+    { "t_ms": 100, "level": 2, "attempt": 0, "tile": 0 },
+    { "t_ms": 200, "level": 2, "attempt": 0, "tile": 2 },
+    { "t_ms": 300, "level": 2, "attempt": 0, "tile": 1 },
+    { "t_ms": 900, "level": 3, "attempt": 0, "tile": 8 },
+    { "t_ms": 1500, "level": 3, "attempt": 1, "tile": 8 },
+    { "t_ms": 2100, "level": 3, "attempt": 2, "tile": 8 }
+  ],
+  "expected": { "primary": 2, "score": { "level": 2, "lives_left": 0 } }
+}

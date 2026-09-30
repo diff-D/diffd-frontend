@@ -1,0 +1,47 @@
+{
+  "test": "yellow_tea",
+  "description": "every new word of each 20 s round counts",
+  "challenge": {
+    "groups": [
+      "ate",
+      "and"
+    ],
+    "rules": {
+      "kind": "rounds",
+      "rounds": 5,
+      "round_ms": 20000,
+      "count": "most"
+    }
+  },
+  "events": [
+    {
+      "t_ms": 100,
+      "word": "late"
+    },
+    {
+      "t_ms": 200,
+      "word": "water"
+    },
+    {
+      "t_ms": 12500,
+      "word": "band"
+    },
+    {
+      "t_ms": 13000,
+      "word": "cats"
+    }
+  ],
+  "expected": {
+    "primary": 2,
+    "score": {
+      "points": 2,
+      "words": [
+        "late",
+        "water"
+      ],
+      "wrong": 2,
+      "skipped": 0,
+      "missed": 0
+    }
+  }
+}

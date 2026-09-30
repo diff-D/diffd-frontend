@@ -1,0 +1,375 @@
+@import "tailwindcss";
+@import "@fontsource/roboto-mono/400.css";
+
+/* A phone or tablet: a touch screen with no mouse (the same test as isTouch(), state/device.ts). */
+@custom-variant touch (@media (pointer: coarse) and (hover: none));
+
+/* Colours come only from the active theme (see src/themes). */
+@theme {
+  --color-*: initial;
+  --color-bg: var(--bg-color);
+  --color-main: var(--main-color);
+  --color-caret: var(--caret-color);
+  --color-sub: var(--sub-color);
+  --color-sub-alt: var(--sub-alt-color);
+  --color-text: var(--text-color);
+  --color-error: var(--error-color);
+  --color-error-extra: var(--error-extra-color);
+  --color-colorful-error: var(--colorful-error-color);
+  --color-colorful-error-extra: var(--colorful-error-extra-color);
+  --default-transition-duration: 0.125s;
+}
+
+@layer base {
+  /* the default (diffd) theme until src/themes applies the saved one, so the first
+     paint is never white */
+  :root {
+    --bg-color: #15171c;
+    --main-color: #5ee3a8;
+    --caret-color: #5ee3a8;
+    --sub-color: #5c6370;
+    --sub-alt-color: #1e2129;
+    --text-color: #d6dae0;
+    --error-color: #ff6b6b;
+    --error-extra-color: #c24848;
+    --colorful-error-color: #ff6b6b;
+    --colorful-error-extra-color: #c24848;
+  }
+  html {
+    line-height: 1.25;
+    background: var(--bg-color);
+  }
+  body {
+    margin: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Roboto Mono", monospace;
+  }
+  ::selection {
+    background: var(--main-color);
+    color: var(--bg-color);
+  }
+  kbd {
+    background: var(--sub-color);
+    color: var(--bg-color);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.75em;
+    font-family: inherit;
+  }
+}
+
+/* Look adapted from Monkeytype (GPL-3.0): buttons, inputs, words, caret. */
+@layer components {
+  .btn-text {
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    color: var(--sub-color);
+    transition: color 0.125s;
+  }
+  @media (hover: hover) {
+    .btn-text:hover {
+      color: var(--text-color);
+    }
+  }
+  .btn-text:focus-visible {
+    color: var(--text-color);
+  }
+  /* keyboard focus is shown with the theme, not the browser's blue ring */
+  .btn-text:focus-visible,
+  .btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--main-color);
+  }
+  .btn-text:active {
+    color: var(--main-color);
+  }
+  .btn {
+    padding: 0.5em 1em;
+    border-radius: 0.5rem;
+    background: var(--sub-alt-color);
+    color: var(--text-color);
+    transition:
+      background-color 0.125s,
+      color 0.125s;
+  }
+  /* touch screens keep :hover after a tap, which would leave the last button lit */
+  @media (hover: hover) {
+    .btn:hover:not(:disabled) {
+      background: var(--text-color);
+      color: var(--bg-color);
+    }
+  }
+  .btn:focus-visible {
+    background: var(--text-color);
+    color: var(--bg-color);
+  }
+  /* a choice in a group of pills (mode, settings) */
+  .pill {
+    padding: 0.25em 0.9em;
+    border-radius: 999px;
+    color: var(--sub-color);
+    transition: color 0.1s;
+  }
+  @media (hover: hover) {
+    .pill:hover {
+      color: var(--text-color);
+    }
+  }
+  .pill:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--main-color);
+  }
+  .pill.active,
+  .pill.active:hover {
+    background: var(--main-color) !important;
+    color: var(--bg-color);
+  }
+  /* the phone remote's keys: lit only while pressed, with no fade either way */
+  .pad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background: var(--sub-alt-color);
+    color: var(--text-color);
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pad:active:not(:disabled) {
+    background: var(--main-color);
+    color: var(--bg-color);
+  }
+  .pad:focus {
+    outline: none;
+  }
+  /* the one thing to press next (start, ready) */
+  .btn.primary {
+    background: var(--main-color);
+    color: var(--bg-color);
+  }
+  .btn.outline {
+    background: transparent;
+    box-shadow: inset 0 0 0 2px var(--main-color);
+    color: var(--main-color);
+  }
+  @media (hover: hover) {
+    .btn.primary:hover:not(:disabled),
+    .btn.outline:hover:not(:disabled) {
+      background: var(--text-color);
+      box-shadow: none;
+      color: var(--bg-color);
+    }
+  }
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .field {
+    padding: 0.5em 0.75em;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    background: var(--sub-alt-color);
+    color: var(--text-color);
+  }
+  .field::placeholder {
+    color: var(--sub-color);
+  }
+  .field:focus {
+    box-shadow: 0 0 0 2px var(--main-color);
+  }
+  .field.error {
+    box-shadow: 0 0 0 2px var(--error-color);
+    color: var(--error-color);
+    animation: shake 0.3s ease-in-out;
+  }
+  /* a right answer: the box glows green for a moment */
+  .field.good {
+    box-shadow: 0 0 0 2px var(--main-color);
+    animation: glow-good 0.45s ease-out;
+  }
+  /* a score that just went up, and the ✓ / ✗ by the answer box */
+  .bump {
+    animation: bump 0.3s ease-out;
+  }
+  .mark-pop {
+    animation: mark-pop 0.5s ease-out forwards;
+  }
+  /* a verdict that pops in and stays */
+  .mark-pop-in {
+    animation: bump 0.35s ease-out;
+  }
+  /* number memory: the bar under the number empties while it is shown */
+  .countdown {
+    animation: countdown linear forwards;
+  }
+  /* home page test cards */
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background: var(--sub-alt-color);
+    transition: box-shadow 0.125s;
+  }
+  .card:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--main-color);
+  }
+  @media (hover: hover) {
+    .card:hover {
+      box-shadow: 0 0 0 2px var(--main-color);
+    }
+  }
+  /* a touch screen: every button a finger's size, no grey flash on a tap, no double-tap
+     zoom delay, and a press shows */
+  @media (pointer: coarse) and (hover: none) {
+    .btn,
+    .btn-text,
+    .pill,
+    .card {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn,
+    .pill {
+      min-height: 2.75rem;
+    }
+    .btn-text {
+      min-height: 2.75rem;
+      min-width: 2.75rem;
+    }
+    .btn:active:not(:disabled),
+    .card:active {
+      background: var(--main-color);
+      color: var(--bg-color);
+    }
+    /* iOS zooms into a text box whose text is under 16px */
+    .field.text-sm,
+    .field.text-xs {
+      font-size: 1rem !important;
+    }
+  }
+  .word {
+    position: relative;
+    margin: 0.25em 0.3em;
+    line-height: 1em;
+    border-bottom: 2px solid transparent;
+    font-variant: no-common-ligatures;
+  }
+  .word.error {
+    border-bottom-color: var(--error-color);
+  }
+  .letter {
+    color: var(--sub-color);
+  }
+  .letter.correct {
+    color: var(--text-color);
+  }
+  .letter.incorrect {
+    color: var(--error-color);
+  }
+  .letter.extra {
+    color: var(--error-extra-color);
+  }
+  .caret {
+    position: absolute;
+    width: 0.1em;
+    height: 1.2em;
+    border-radius: 0.5rem;
+    background: var(--caret-color);
+    transition:
+      left 100ms linear,
+      top 100ms linear;
+  }
+  .caret.idle {
+    animation: caret-flash 1s infinite;
+  }
+  /* a 1v1 opponent's caret */
+  .caret.opponent {
+    background: var(--sub-color);
+    opacity: 0.7;
+  }
+}
+
+@keyframes caret-flash {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes glow-good {
+  from {
+    background: color-mix(in srgb, var(--main-color) 10%, var(--sub-alt-color));
+  }
+  to {
+    background: var(--sub-alt-color);
+  }
+}
+
+@keyframes bump {
+  40% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes mark-pop {
+  0% {
+    opacity: 0;
+  }
+  20%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes countdown {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+/* scrollbars: thin, in the theme's colours rather than the system's */
+:root {
+  scrollbar-color: var(--sub-alt-color) transparent;
+}
+* {
+  scrollbar-width: thin;
+}
+
+/* motion only for those who want it: the caret, the scrolling words and fades snap instead */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
